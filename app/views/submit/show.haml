@@ -1,6 +1,6 @@
 = form_tag(eval_submission_path, method: :post, remote: true) do
   = label_tag(:code, "Solution:")
-  = text_field_tag(:code)
+  = text_area_tag(:code)
   = submit_tag("Submit")
 
 #result
