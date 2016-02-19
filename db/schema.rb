@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219015031) do
+ActiveRecord::Schema.define(version: 20160219023256) do
 
   create_table "challenges", force: :cascade do |t|
     t.text     "title"
@@ -20,15 +20,7 @@ ActiveRecord::Schema.define(version: 20160219015031) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "submissions", force: :cascade do |t|
-    t.integer  "challenge_id"
-    t.text     "code"
-    t.decimal  "time"
-    t.integer  "length"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "submissions", ["challenge_id"], name: "index_submissions_on_challenge_id"
+# Could not dump table "submissions" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end

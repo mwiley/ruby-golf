@@ -1,10 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<strong>Challenge: <%= @submission.challenge.title %></strong>
+<p>
+  <strong>Challenge:</strong>
+  <%= @submission.challenge.title %>
+</p>
 
 <p>
-  <strong>Description</strong>
+  <strong>Description:</strong>
   <%= @submission.challenge.descripton %>
+</p>
+
+<p>
+  <strong>Passed:</strong>
+  <%= @submission.passed? %>
 </p>
 
 <p>

@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_challenge
 
   # GET /submissions
   # GET /submissions.json
@@ -14,7 +15,6 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
-    @challenge = Challenge.find(params[:challenge_id])
     @submission = Submission.new
   end
 
@@ -30,11 +30,12 @@ class SubmissionsController < ApplicationController
 
     result = SandboxService.query(@submission.challenge.title, @submission.code)
     @submission.time = result['time']
+    @submission.passed = result['passed']
     @submission.length = @submission.code.length
 
     respond_to do |format|
       if @submission.save
-        format.html { redirect_to challenge_submissions_path(@challenge, @submission),
+        format.html { redirect_to challenge_submission_path(@challenge, @submission),
                       notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else
@@ -72,6 +73,10 @@ class SubmissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @submission = Submission.find(params[:id])
+    end
+
+    def set_challenge
+      @challenge = Challenge.find(params[:challenge_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
