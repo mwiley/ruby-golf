@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  challenge_id: 
+  code: MyText
+  time: 9.99
+  length: 1
+
+two:
+  challenge_id: 
+  code: MyText
+  time: 9.99
+  length: 1
