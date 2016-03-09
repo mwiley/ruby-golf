@@ -1,0 +1,10 @@
+%p#notice= notice
+
+.col-sm-8
+  .row
+    .challenge
+      %h1= @challenge.title
+      %p= @challenge.descripton
+
+  .row
+    = render 'submissions/form', challenge: @challenge, submission: Submission.new

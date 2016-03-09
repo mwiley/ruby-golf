@@ -1,0 +1,15 @@
+= form_for [challenge, submission], class: 'form' do |f|
+  - if submission.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(submission.errors.count, "error")
+        prohibited this submission from being saved:
+      %ul
+        - submission.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :code, 'Submit a new solution:'
+    = f.text_area :code, class: 'form-control'
+  .actions
+    = f.submit class: 'btn btn-primary'
+    = link_to 'Back', challenges_path, class: 'btn btn-default'

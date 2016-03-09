@@ -33,8 +33,10 @@ class SubmissionsController < ApplicationController
     @submission.passed = result['passed']
     @submission.length = @submission.code.length
 
+    @submission.errors.add(:passed, 'Your code did not pass the test.') unless @submission.passed?
+
     respond_to do |format|
-      if @submission.save
+      if @submission.passed? && @submission.save
         format.html { redirect_to challenge_submission_path(@challenge, @submission),
                       notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
