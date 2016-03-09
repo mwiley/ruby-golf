@@ -8,3 +8,19 @@
 
   .row
     = render 'submissions/form', challenge: @challenge, submission: Submission.new
+
+  .row
+    %h3 Submissions
+  .row
+    %table.table
+      %thead
+        %tr
+          %th Code
+          %th Characters
+          %th Time
+      %tbody
+        - @challenge.submissions.each do |submission|
+          %tr
+            %td= submission.code
+            %td= submission.code.length
+            %td= submission.time
