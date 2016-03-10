@@ -1,26 +1,30 @@
-%p#notice= notice
-
 .col-sm-8
   .row
     .challenge
       %h1= @challenge.title
       %p= @challenge.descripton
 
-  .row
-    = render 'submissions/form', challenge: @challenge, submission: Submission.new
+  - if user_signed_in?
+    .row
+      = render 'submissions/form', challenge: @challenge, submission: Submission.new
 
   .row
     %h3 Submissions
   .row
-    %table.table#submissions
-      %thead
-        %tr
-          %th Code
-          %th Characters
-          %th Time
-      %tbody
-        - @challenge.submissions.each do |submission|
+    - if @challenge.submissions.any?
+      %table.table#submissions
+        %thead
           %tr
-            %td= submission.code
-            %td= submission.code.length
-            %td= submission.time
+            %th User
+            %th Code
+            %th Characters
+            %th Time
+        %tbody
+          - @challenge.submissions.each do |submission|
+            %tr
+              %td= submission.user.email
+              %td= submission.code
+              %td= submission.code.length
+              %td= submission.time
+    - else
+      %p No submssions yet!

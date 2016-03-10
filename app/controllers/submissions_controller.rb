@@ -1,4 +1,5 @@
 class SubmissionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :set_challenge
 
@@ -6,7 +7,8 @@ class SubmissionsController < ApplicationController
   # POST /submissions.json
   def create
     @challenge = Challenge.find(params[:challenge_id])
-    @submission = Submission.new(challenge_id: params[:challenge_id], code: params[:submission][:code])
+    @submission = current_user.submissions
+      .new(challenge_id: params[:challenge_id], code: params[:submission][:code])
 
     result = SandboxService.query(@submission.challenge.title, @submission.code)
     @submission.time = result['time']
