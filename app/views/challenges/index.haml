@@ -3,5 +3,5 @@
   - @challenges.each do |challenge|
     .challenge
       %h4.new-submission-link= link_to challenge.title, challenge
-      %h5.submission-count= pluralize challenge.submissions.size, 'entries'
+      %h5.submission-count= pluralize challenge.submissions.size, 'submission'
       %p= simple_format challenge.descripton
