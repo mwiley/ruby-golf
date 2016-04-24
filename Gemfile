@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.5.1'
+gem 'puma'
 gem 'pg'
 gem 'devise'
 gem 'haml'
