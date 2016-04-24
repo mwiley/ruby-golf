@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160310060625) do
 
   create_table "challenges", force: :cascade do |t|
     t.text     "title"
-    t.text     "descripton"
+    t.text     "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
