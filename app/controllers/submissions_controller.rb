@@ -8,19 +8,23 @@ class SubmissionsController < ApplicationController
   def create
     @challenge = Challenge.find(params[:challenge_id])
     @submission = current_user.submissions
-      .new(challenge_id: params[:challenge_id], code: params[:submission][:code])
+      .new(challenge_id: params[:challenge_id], code: params[:submission][:code].strip)
 
-    result = SandboxService.query(@submission.challenge.title, @submission.code)
-    @submission.time = result['time']
-    @submission.passed = result['passed']
-    @submission.length = @submission.code.length
-
-    if !@submission.passed?
-      redirect_to challenge_path(@challenge), notice: 'Your submission failed the test.'
-    elsif @submission.save
-      redirect_to challenge_path(@challenge), notice: 'Submission was successfully created.'
+    if @challenge.submissions.where(code: params[:submission][:code].strip).any?
+      redirect_to challenge_path(@challenge), notice: 'Your submission has already been used.'
     else
-      redirect_to challenge_path(@challenge), notice: 'Something went wrong!'
+      result = SandboxService.query(@submission.challenge.title, @submission.code)
+      @submission.time = result['time']
+      @submission.passed = result['passed']
+      @submission.length = @submission.code.length
+
+      if !@submission.passed?
+        redirect_to challenge_path(@challenge), notice: 'Your submission failed the test.'
+      elsif @submission.save
+        redirect_to challenge_path(@challenge), notice: 'Submission was successfully created.'
+      else
+        redirect_to challenge_path(@challenge), notice: 'Something went wrong!'
+      end
     end
   end
 
