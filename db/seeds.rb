@@ -18,6 +18,10 @@ challenges = [
   {
     title: 'fizzbuzz',
     description: 'Given an integer, define a function fizzbuzz that returns “Fizz” if it is a multiple of 3, “Buzz” if it is a multiple of 5 and “FizzBuzz” if it is a multiple of 15. If the number is not a multiple of 3 or 5 then the number is returned as a string.'
+  },
+  {
+    title: 'fizzbuzz2',
+    description: "For integers 1-100, output 'Fizz' if the number is divisible by 3, 'Buzz' if it's divisible by 5, and 15 if it's divisible by both. If it's not divisible by any of these, output the number. All outputs should be stored in a string :fizzbuzz and seperated by a single space."
   }
 ]
 
