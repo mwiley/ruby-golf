@@ -33,9 +33,13 @@ challenges = [
     " 'Buzz' if it's divisible by 5, and 15 if it's divisible by both. If it's not divisible" +
     " by any of these, output the number. All outputs should be stored in a string" +
     " :fizzbuzz and seperated by a single space.",
-    example: "fizzbuzz = '1 2 Fizz 4 Buzz ...'"
+    example: "fizzbuzz = '1 2 Fizz 4 Buzz Fizz ...'"
   }
 ]
 
-challenges.each { |challenge| Challenge.create(challenge) }
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+challenges.each do |c|
+  challenge = Challenge.find_or_create_by(title: c[:title])
+  challenge.update(c)
+end
+
+AdminUser.create(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
