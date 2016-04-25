@@ -3,12 +3,16 @@
     .challenge-description
       %h1= @challenge.title
       %p= @challenge.description
-      - if @challenge.start
+      - unless @challenge.start.blank?
         %h3 Start:
         %pre= @challenge.start
+      - unless @challenge.end.blank?
         %h3 End:
-      - if @challenge.end
         %pre= @challenge.end
+      - unless @challenge.example.blank?
+        %h3 Example:
+        %pre= @challenge.example
+
 
   - if user_signed_in?
     .row

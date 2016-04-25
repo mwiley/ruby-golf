@@ -13,6 +13,6 @@ ActiveAdmin.register Challenge do
 #   permitted
 # end
 
-permit_params :title, :description, :start, :end
+permit_params :title, :description, :start, :end, :example
 
 end
