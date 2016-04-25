@@ -8,10 +8,11 @@
         - submission.errors.full_messages.each do |message|
           %li= message
   .form-group
-    = f.label :code, 'Submit a new solution:'
+    = f.label :code, 'Your solution:'
     = f.text_area :code, class: 'form-control'
     #editor
 
   .actions
-    = f.submit class: 'btn btn-primary'
-    = link_to 'Back', challenges_path, class: 'btn btn-default'
+    = f.submit 'Submit', class: 'btn btn-primary'
+    = link_to 'Back', challenges_path, class: 'btn btn-default',
+      data: { confirm: 'Are you sure? Your changes will be lost.' }

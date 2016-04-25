@@ -26,3 +26,4 @@ challenges = [
 ]
 
 challenges.each { |challenge| Challenge.create(challenge) }
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

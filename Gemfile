@@ -3,9 +3,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.1'
 gem 'puma'
 gem 'pg'
-gem 'devise'
-gem 'haml'
 
+gem 'devise'
+gem 'activeadmin', '~> 1.0.0.pre2'
+
+gem 'haml'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'sprockets', '>=3.0.0.beta'

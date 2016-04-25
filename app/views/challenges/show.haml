@@ -1,8 +1,14 @@
 .col-sm-8
   .row
-    .challenge
+    .challenge-description
       %h1= @challenge.title
       %p= @challenge.description
+      - if @challenge.start
+        %h3 Start:
+        %pre= @challenge.start
+        %h3 End:
+      - if @challenge.end
+        %pre= @challenge.end
 
   - if user_signed_in?
     .row
