@@ -13,7 +13,10 @@
  */
 
 @import "bootstrap-sprockets";
+@import "_variables";
 @import "bootstrap";
+@import "_bootswatch";
+
 @import "jquery-tablesorter/theme.default";
 @import "challenges";
 @import "submissions";
