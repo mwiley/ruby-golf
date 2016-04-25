@@ -34,6 +34,12 @@ challenges = [
     " by any of these, output the number. All outputs should be stored in a string" +
     " :fizzbuzz and seperated by a single space.",
     example: "fizzbuzz = '1 2 Fizz 4 Buzz Fizz ...'"
+  },
+  {
+    title: 'sum',
+    description: 'Find the sum of all the multiples of 3 or 5 below 1000.' +
+    'Store your answer in the variable :sum',
+    example: 'sum = #your answer here'
   }
 ]
 
