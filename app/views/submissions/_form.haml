@@ -1,4 +1,6 @@
-= form_for [challenge, submission], class: 'form', remote: true do |f|
+#editor
+
+= form_for [challenge, submission], class: 'form' do |f|
   - if submission.errors.any?
     #error_explanation
       %h2
@@ -9,7 +11,7 @@
           %li= message
   .form-group
     = f.label :code, 'Submit a new solution:'
-    = f.text_area :code, class: 'form-control', id: 'editor'
+    = f.text_area :code, class: 'form-control'
 
   .actions
     = f.submit class: 'btn btn-primary'
