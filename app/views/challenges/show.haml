@@ -10,7 +10,7 @@
 
   .row
     %h3 Submissions
-  .row
+  .row.submissions
     - if @submissions.any?
       %table.table#submissions
         %thead
@@ -21,11 +21,11 @@
             %th Time
         %tbody
           - @challenge.submissions.each do |submission|
-            %tr
-              %td= submission.user.email
-              %td= submission.code
-              %td= submission.code.length
-              %td= submission.time
+            %tr.submission
+              %td.user= submission.user.email
+              %td.code= submission.code
+              %td.chars= submission.code.length
+              %td.time= submission.time
       = paginate @submissions
     - else
       %p No submssions yet!
