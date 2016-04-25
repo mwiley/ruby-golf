@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery-tablesorter
+//= require ace-rails-ap
+//= require ace/theme-twilight
+//= require ace/mode-ruby
 //= require_tree .
