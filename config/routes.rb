@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   resources :challenges do
     resources :submissions
   end
-  get 'submit/:problem' => 'submit#show'
-  post 'submit/:problem' => 'submit#new', as: :eval_submission
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
