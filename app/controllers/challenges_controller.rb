@@ -10,6 +10,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/1
   # GET /challenges/1.json
   def show
+    @submissions = @challenge.submissions.page params[:page]
   end
 
   private

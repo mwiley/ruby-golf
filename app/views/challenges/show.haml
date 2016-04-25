@@ -11,7 +11,7 @@
   .row
     %h3 Submissions
   .row
-    - if @challenge.submissions.any?
+    - if @submissions.any?
       %table.table#submissions
         %thead
           %tr
@@ -26,5 +26,6 @@
               %td= submission.code
               %td= submission.code.length
               %td= submission.time
+      = paginate @submissions
     - else
       %p No submssions yet!

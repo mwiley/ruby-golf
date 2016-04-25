@@ -82,6 +82,9 @@ GEM
     jquery-tablesorter (1.20.5)
       railties (>= 3.2, < 6)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -172,11 +175,11 @@ DEPENDENCIES
   ace-rails-ap
   bootstrap-sass (~> 3.3.6)
   byebug
-  coffee-rails (~> 4.1.0)
   devise
   haml
   jquery-rails
   jquery-tablesorter
+  kaminari
   pg
   puma
   rails (= 4.2.5.1)
