@@ -16,7 +16,7 @@ challenges = [
     title: 'sort',
     description: 'The string :nums contains integers seperated by spaces. Transform :nums into' +
     ' a string with these integers sorted.',
-    start: "hello = 'hello world'", end: "nums = '134 12 53 1 269 23 1 57'"
+    start: "nums = '1 1 12 134 23 269 53 57'", end: "nums = '134 12 53 1 269 23 1 57'"
   },
   {
     title: 'fizzbuzz',
