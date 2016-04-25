@@ -32,7 +32,8 @@ challenges = [
     description: "For integers 1-100, output 'Fizz' if the number is divisible by 3,"+
     " 'Buzz' if it's divisible by 5, and 15 if it's divisible by both. If it's not divisible" +
     " by any of these, output the number. All outputs should be stored in a string" +
-    " :fizzbuzz and seperated by a single space."
+    " :fizzbuzz and seperated by a single space.",
+    example: "fizzbuzz = '1 2 Fizz 4 Buzz ...'"
   }
 ]
 
