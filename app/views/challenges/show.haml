@@ -32,8 +32,10 @@
         %tbody
           - @challenge.submissions.each do |submission|
             %tr.submission
-              %td.user= submission.user.email
-              %td.code= submission.code
+              %td.user
+                %strong= submission.user.email
+              %td.code
+                %pre= submission.code
               %td.chars= submission.code.length
               %td.time= submission.time
       = paginate @submissions
