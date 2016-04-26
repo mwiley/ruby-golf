@@ -14,6 +14,9 @@ class SubmissionsController < ApplicationController
       redirect_to challenge_path(@challenge), notice: 'Your submission has already been used.'
     else
       result = SandboxService.query(@submission.challenge.title, @submission.code)
+
+      puts result
+
       @submission.time = result['time']
       @submission.passed = result['passed']
       @submission.length = @submission.code.length
