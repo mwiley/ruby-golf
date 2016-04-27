@@ -19,7 +19,9 @@ class SubmissionsController < ApplicationController
 
       @submission.time = result['time']
       @submission.passed = result['passed']
-      @submission.length = @submission.code.length
+
+      # count non-space characters
+      @submission.length = @submission.code.chars.reject({|c| c != ' ' & c != "\n"}).length
 
       if !@submission.passed?
         redirect_to challenge_path(@challenge), notice: 'Your submission failed the test.'
