@@ -1,5 +1,7 @@
 $(document).on('ready page:load', () => {
-  $("table#submissions").tablesorter();
+  $("table#submissions").tablesorter({
+    sortList: [[3,0],[2,0]] 
+  });
 
   var editor = ace.edit("editor");
   editor.setOptions({
