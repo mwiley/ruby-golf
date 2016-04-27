@@ -9,7 +9,7 @@
     %nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-        = link_to 'RubyGolf', challenges_path, class: 'navbar-brand'
+          = link_to 'RubyGolf', challenges_path, class: 'navbar-brand'
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
             %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
