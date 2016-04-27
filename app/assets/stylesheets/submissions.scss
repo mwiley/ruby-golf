@@ -4,8 +4,15 @@
 
 #editor {
   position: relative;
-  width: 500px;
+  width: 760px;
   height: 400px;
+
+  @media (max-width: 1198px) {
+    width: 627px;
+  }
+  @media (max-width: 998px) {
+    width: 100%;
+  }
 }
 
 .submissions {
