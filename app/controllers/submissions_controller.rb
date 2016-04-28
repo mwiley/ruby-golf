@@ -11,7 +11,7 @@ class SubmissionsController < ApplicationController
       .new(challenge_id: params[:challenge_id], code: params[:submission][:code].strip)
 
     if @challenge.submissions.where(code: params[:submission][:code].strip).any?
-      redirect_to challenge_path(@challenge), notice: 'Your submission has already been used.'
+      redirect_to challenge_path(@challenge), alert: 'Your submission has already been used.'
     else
       result = SandboxService.query(@submission.challenge.title, @submission.code)
 
@@ -24,9 +24,12 @@ class SubmissionsController < ApplicationController
       @submission.length = @submission.code.chars.reject { |c| c != ' ' && c != "\n" }.length
 
       if !@submission.passed?
-        redirect_to challenge_path(@challenge), notice: 'Your submission failed the test.'
+        redirect_to challenge_path(@challenge), alert: 'Your submission failed the test.',
+          result: result['result'],
+          error: result['error']
       elsif @submission.save
-        redirect_to challenge_path(@challenge), notice: 'Submission was successfully created.'
+        redirect_to challenge_path(@challenge), notice: 'Submission was successfully created.',
+          result: result['result']
       else
         redirect_to challenge_path(@challenge), notice: 'Something went wrong!'
       end

@@ -25,8 +25,17 @@
         .alert.alert-success
           %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} &times;
           = notice
+          - if result
+            %h3 Your result:
+            %pre= result
       - if alert
         .alert.alert-warning
           %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} &times;
           = alert
+          - if error
+            %h3 Error:
+            %code= error
+          - if result
+            %h3 Your result:
+            %pre= result
       = yield
