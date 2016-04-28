@@ -1,29 +1,33 @@
-var STORE_KEY = '@submissions/' + window.location.pathname;
-
-function storeCode(code) {
+/* Store user's solution in localStore */
+function storeCode(key, code) {
   var codeObject = {
     body: code
   };
 
-  console.log("Storing in " + STORE_KEY, codeObject);
-  localStorage.setItem(STORE_KEY, JSON.stringify(codeObject));
+  console.log("Storing in " + key, codeObject);
+  localStorage.setItem(key, JSON.stringify(codeObject));
 };
 
-function loadCode()  {
+/* Retreive user's solution from localStorage */
+function loadCode(key)  {
   var code;
   try {
-    code = JSON.parse(localStorage.getItem(STORE_KEY));
-  } catch (e) {
-    code = {
-      body: ''
-    }
+    code = JSON.parse(localStorage.getItem(key));
+    console.log("Loading from " + key, code)
+  } catch (error) {
+    console.log('Error loading from ' + key, error);
   }
 
-  console.log("Loading from " + STORE_KEY, code);
+  if (!code) {
+    code = { body: '' }
+  }
+
   return code.body;
 };
 
 $(document).on('ready page:load', () => {
+  var STORE_KEY = '@submissions/' + window.location.pathname;
+
   $("table#submissions").tablesorter({
     sortList: [[3,0],[2,0]]
   });
@@ -39,12 +43,13 @@ $(document).on('ready page:load', () => {
   var textarea = $('#submission_code');
   textarea.hide();
 
-  var storedCode = loadCode();
+  var storedCode = loadCode(STORE_KEY);
   editor.setValue(storedCode);
+  textarea.val(storedCode);
 
   editor.getSession().on('change', () => {
     var code = editor.getSession().getValue();
     textarea.val(code);
-    storeCode(code);
+    storeCode(STORE_KEY, code);
   });
 });
