@@ -1,4 +1,4 @@
-.col-lg-8
+.col-lg-12
   .row
     .challenge-description
       %h1= @challenge.title
@@ -35,7 +35,7 @@
               %td.user
                 %strong= submission.user.email
               %td.code
-                %pre= submission.code
+                %code= submission.code
               %td.chars= submission.code.length
               %td.time= submission.time
       = paginate @submissions

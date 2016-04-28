@@ -4,12 +4,8 @@
 
 #editor {
   position: relative;
-  width: 760px;
+  width: 100%;
   height: 400px;
-
-  @media (max-width: 1198px) {
-    width: 100%;
-  }
 }
 
 .submissions {
