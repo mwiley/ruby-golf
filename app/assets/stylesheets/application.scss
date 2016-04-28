@@ -20,3 +20,7 @@
 @import "jquery-tablesorter/theme.default";
 @import "challenges";
 @import "submissions";
+
+.navbar-header strong {
+  margin-left: -0.2em;
+}
