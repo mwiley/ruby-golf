@@ -9,7 +9,7 @@ function storeCode(key, code) {
 };
 
 /* Retreive user's solution from localStorage */
-function loadCode(key)  {
+function loadCode(key) {
   var code;
   try {
     code = JSON.parse(localStorage.getItem(key));
