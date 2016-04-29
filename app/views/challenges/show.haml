@@ -35,7 +35,7 @@
               %td.user
                 %strong= submission.user.email
               %td.code
-                %code= submission.code
+                %pre= submission.code
               %td.chars= submission.code.length
               %td.time= submission.time
       = paginate @submissions
