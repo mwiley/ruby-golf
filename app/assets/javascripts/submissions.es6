@@ -27,7 +27,7 @@ function loadCode(key) {
 
 $(document).on('ready page:load', () => {
   $("table#submissions").tablesorter({
-    sortList: [[3,0],[2,0]]
+    sortList: [[1,0],[2,0]]
   });
 
   if ($('#editor').length > 0) {
