@@ -63,6 +63,14 @@ challenges = [
     description: '2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26. ' +
     'What is the sum of the digits of the number 2^1000?',
     example: 'sum = #your answer here'
+  },
+  {
+    title: 'factorial_digit_sum',
+    description: "n! means n × (n − 1) × ... × 3 × 2 × 1\n" +
+                 "For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,\n" +
+                 "and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.\n" +
+                 "Find the sum of the digits in the number 100!'",
+    example: 'sum = #your answer here'
   }
 ]
 
