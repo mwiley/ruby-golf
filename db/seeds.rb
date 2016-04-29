@@ -40,6 +40,11 @@ challenges = [
     description: 'Find the sum of all the multiples of 3 or 5 below 1000.' +
     'Store your answer in the variable :sum',
     example: 'sum = #your answer here'
+  },
+  {
+    title: 'largest_prime_factor',
+    description: "What's the largest prime factor of 600851475143?",
+    example: 'factor = #your answer here'
   }
 ]
 
