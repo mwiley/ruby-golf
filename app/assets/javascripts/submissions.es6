@@ -26,30 +26,32 @@ function loadCode(key) {
 };
 
 $(document).on('ready page:load', () => {
-  var STORE_KEY = '@submissions/' + window.location.pathname;
-
   $("table#submissions").tablesorter({
     sortList: [[3,0],[2,0]]
   });
 
-  var editor = ace.edit("editor");
-  editor.getSession().setMode('ace/mode/ruby');
-  editor.setOptions({
-    'theme': 'ace/theme/twilight',
-    'tabSize': 2,
-    'useSoftTabs': true,
-  });
+  if ($('#editor').length > 0) {
+    var STORE_KEY = '@submissions/' + window.location.pathname;
 
-  var textarea = $('#submission_code');
-  textarea.hide();
+    var editor = ace.edit("editor");
+    editor.getSession().setMode('ace/mode/ruby');
+    editor.setOptions({
+      'theme': 'ace/theme/twilight',
+      'tabSize': 2,
+      'useSoftTabs': true,
+    });
 
-  var storedCode = loadCode(STORE_KEY);
-  editor.setValue(storedCode);
-  textarea.val(storedCode);
+    var textarea = $('#submission_code');
+    textarea.hide();
 
-  editor.getSession().on('change', () => {
-    var code = editor.getSession().getValue();
-    textarea.val(code);
-    storeCode(STORE_KEY, code);
-  });
+    var storedCode = loadCode(STORE_KEY);
+    editor.setValue(storedCode);
+    textarea.val(storedCode);
+
+    editor.getSession().on('change', () => {
+      var code = editor.getSession().getValue();
+      textarea.val(code);
+      storeCode(STORE_KEY, code);
+    });
+  }
 });
