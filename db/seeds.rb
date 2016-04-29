@@ -57,6 +57,12 @@ challenges = [
     description: 'The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17. ' +
     'Find the sum of all the primes below one million.',
     example: 'sum = #your answer here',
+  },
+  {
+    title: 'power_digit_sum',
+    description: '2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26. ' +
+    'What is the sum of the digits of the number 2^1000?',
+    example: 'sum = #your answer here'
   }
 ]
 
