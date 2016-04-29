@@ -22,11 +22,17 @@
     %h3 Submissions
   .row.submissions
     - if @submissions.any?
+      - unless @submissions.where(user: current_user).any?
+        %p
+          Solve the challenge to unlock other users' code. 
+          - unless user_signed_in?
+            = link_to 'Click here to sign up.', new_user_registration_path
       %table.table#submissions
         %thead
           %tr
             %th User
-            %th Code
+            - if @submissions.where(user: current_user).any?
+              %th Code
             %th Characters
             %th Time (seconds)
         %tbody
@@ -34,8 +40,9 @@
             %tr.submission
               %td.user
                 %strong= submission.user.username
-              %td.code
-                %pre= submission.code
+              - if @submissions.where(user: current_user).any?
+                %td.code
+                  %pre= submission.code
               %td.chars= submission.code.length
               %td.time= submission.time
       = paginate @submissions
