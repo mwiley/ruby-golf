@@ -33,7 +33,7 @@
           - @challenge.submissions.each do |submission|
             %tr.submission
               %td.user
-                %strong= submission.user.email
+                %strong= submission.user.username
               %td.code
                 %pre= submission.code
               %td.chars= submission.code.length
