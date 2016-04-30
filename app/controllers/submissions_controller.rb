@@ -5,9 +5,7 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
-    @challenge = Challenge.find(params[:challenge_id])
     @submission = current_user.submissions.new(submission_params)
-
     result = SandboxService.query(@submission.challenge.title, @submission.code)
     puts result
 
@@ -16,10 +14,8 @@ class SubmissionsController < ApplicationController
     @submission.passed = result['passed']
 
     if @submission.passed?
-      code = params[:submission][:code].strip
-      challenges = @challenge.submissions.where(code: code, user: current_user)
-      if challenges.any?
-        challenge = challenges.first
+      challenge = @challenge.submissions.find_by(code: @submission.code, user: current_user)
+      if challenge.present?
         challenge.update(time: @submission.time) if @submission.time < challenge.time
 
         redirect_to(challenge_path(@challenge),
