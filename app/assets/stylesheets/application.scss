@@ -13,13 +13,14 @@
  */
 
 @import "bootstrap-sprockets";
-@import "_variables";
+@import "bootswatch/_variables";
 @import "bootstrap";
-@import "_bootswatch";
+@import "bootswatch/_bootswatch";
+
 @import "devise_bootstrap_views";
 @import "jquery-tablesorter/theme.default";
 
-@import "challenges";
-@import "submissions";
+@import "pages/challenges";
+@import "pages/submissions";
 @import "main";
 @import "shame";
