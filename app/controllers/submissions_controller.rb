@@ -20,20 +20,23 @@ class SubmissionsController < ApplicationController
 
     if @submission.passed?
       code = params[:submission][:code].strip
-      if @challenge.submissions.where(code: code, user: current_user).any?
-        redirect_to challenge_path(@challenge),
+      challenges = @challenge.submissions.where(code: code, user: current_user)
+      if challenges.any?
+        challenge = challenges.first
+        challenge.update(time: @submission.time) if @submission.time < challenge.time
+
+        redirect_to(challenge_path(@challenge),
           notice: "Your code passed the test, but you've already submitted it.",
-          result: result['result']
+          result: result['result'])
       elsif @submission.save
-        redirect_to challenge_path(@challenge), notice: 'Submission was successfully created.',
-          result: result['result']
+        redirect_to(challenge_path(@challenge), notice: 'Submission was successfully created.',
+          result: result['result'])
       else
-        redirect_to challenge_path(@challenge), alert: 'Something went wrong!'
+        redirect_to(challenge_path(@challenge), alert: 'Something went wrong!')
       end
     else
-      redirect_to challenge_path(@challenge), alert: 'Your submission failed the test.',
-        result: result['result'],
-        error: result['error']
+      redirect_to(challenge_path(@challenge), alert: 'Your submission failed the test.',
+        result: result['result'], error: result['error'])
     end
   end
 
