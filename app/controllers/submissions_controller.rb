@@ -14,9 +14,9 @@ class SubmissionsController < ApplicationController
     @submission.passed = result['passed']
 
     if @submission.passed?
-      challenge = @challenge.submissions.find_by(code: @submission.code, user: current_user)
-      if challenge.present?
-        challenge.update(time: @submission.time) if @submission.time < challenge.time
+      old_submission = @challenge.submissions.find_by(code: @submission.code, user: current_user)
+      if old_submission.present?
+        old_submission.update(time: @submission.time) if @submission.time < old_submission.time
 
         redirect_to(challenge_path(@challenge),
           notice: "Your code passed the test, but you've already submitted it.",
