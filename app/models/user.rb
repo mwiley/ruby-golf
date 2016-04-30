@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_password
 
-  has_many :submissions
+  has_many :submissions, dependent: :destroy
   validates :username, presence: true, length: { minimum: 2, maximum: 20 }
 end
