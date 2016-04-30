@@ -1,17 +1,14 @@
 class SubmissionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :set_challenge
 
   # POST /submissions
   # POST /submissions.json
   def create
     @challenge = Challenge.find(params[:challenge_id])
-    @submission = current_user.submissions
-      .new(challenge_id: params[:challenge_id], code: params[:submission][:code].strip)
+    @submission = current_user.submissions.new(submission_params)
 
     result = SandboxService.query(@submission.challenge.title, @submission.code)
-
     puts result
 
     @submission.length = @submission.code.chars.length
@@ -42,16 +39,12 @@ class SubmissionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_submission
-      @submission = Submission.find(params[:id])
-    end
-
     def set_challenge
       @challenge = Challenge.find(params[:challenge_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:challenge_id, :code)
+       { challenge_id: params[:challenge_id], code: params[:submission][:code].strip }
     end
 end
